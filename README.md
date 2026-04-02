@@ -1,7 +1,7 @@
 # 🎯 Perfect Circle — AI Game (Hill Climbing)
 
 🚀 Live Demo
-👉 https://pranavkule.github.io/perfect-circle-game/
+👉 https://pranavkule.github.io/perfect_circle_game/
 
 ## 📌 Overview
 This is a simple web-based game where the user attempts to draw a perfect circle using mouse input.  
