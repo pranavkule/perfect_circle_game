@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfect Circle 🎯</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="logo">
+      <div class="logo-circle">○</div>
+      Perfect Circle
+    </div>
+    
+    <div class="level-badge">Hill Climbing AI</div>
+  </header>
+
+  <div class="main">
+
+    <!-- ── LEFT: CANVAS AREA ── -->
+    <div class="left">
+
+      <div class="inst-bar">
+        <span>✏️</span>
+        Draw a circle as perfectly as you can
+      </div>
+
+      <div class="cw" id="cw">
+        <!-- Background canvas: grid + target rings -->
+        <canvas id="bgC"></canvas>
+        <!-- Drawing canvas: user input + AI result -->
+        <canvas id="drawC"></canvas>
+
+        <!-- Shown before user draws -->
+        <div class="hint" id="hint">
+          <div class="hint-emoji">🖊️</div>
+          <h3>Draw Here!</h3>
+          <p>Hold and drag your mouse in a circle</p>
+        </div>
+
+        <!-- Shown while drawing -->
+        <div class="rec-bubble" id="rec">
+          <div class="rec-dot"></div>
+          Drawing...
+        </div>
+
+        <!-- Confetti on good score -->
+        <div class="confetti-wrap" id="confetti"></div>
+      </div>
+
+      <div class="tip-bar">
+        💡 <span>Tip: Slow and steady makes a more perfect circle!</span>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT: STATS PANEL ── -->
+    <div class="right">
+
+      <!-- SCORE SECTION -->
+      <div class="psec">
+        <div class="psec-title">🎯 Your Score</div>
+        <div class="score-center">
+          <div class="score-ring" id="scoreRing">
+            <div class="score-inner">
+              <span class="score-num" id="scoreNum">?</span>
+              <span class="score-pct">ACCURACY</span>
+            </div>
+          </div>
+          <div id="gradeBadge" style="display:none"></div>
+          <div class="grade-msg" id="gradeMsg">Draw a circle to see your score!</div>
+        </div>
+      </div>
+
+      <!-- STATS SECTION -->
+      <div class="psec">
+        <div class="psec-title">📊 Stats</div>
+        <div class="stats-row">
+          <div class="stat-pill">
+            <div class="stat-emoji">🔄</div>
+            <div class="stat-info">
+              <div class="stat-val" id="stIter">—</div>
+              <div class="stat-key">Iterations</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-emoji">📏</div>
+            <div class="stat-info">
+              <div class="stat-val" id="stErr">—</div>
+              <div class="stat-key">Error (px)</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-emoji">⭕</div>
+            <div class="stat-info">
+              <div class="stat-val" id="stR">—</div>
+              <div class="stat-key">Radius</div>
+            </div>
+          </div>
+          <div class="stat-pill">
+            <div class="stat-emoji">✏️</div>
+            <div class="stat-info">
+              <div class="stat-val" id="stPts">0</div>
+              <div class="stat-key">Points</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="psec">
+        <div class="btn-row">
+          <button class="btn btn-go" onclick="analyze()">🚀 Analyze!</button>
+          <button class="btn btn-clr" onclick="clearAll()">🗑️ Clear</button>
+        </div>
+      </div>
+
+      <!-- HOW AI WORKS -->
+      <div class="psec">
+        <div class="psec-title">🤖 How AI Works</div>
+        <div class="steps-list">
+          <div class="hw-step">
+            <div class="hw-num">1</div>
+            <div class="hw-txt">Collects all your drawn points</div>
+          </div>
+          <div class="hw-step">
+            <div class="hw-num">2</div>
+            <div class="hw-txt">Guesses a starting center &amp; radius</div>
+          </div>
+          <div class="hw-step">
+            <div class="hw-num">3</div>
+            <div class="hw-txt">Tries small adjustments to fit better</div>
+          </div>
+          <div class="hw-step">
+            <div class="hw-num">4</div>
+            <div class="hw-txt">Keeps only moves that reduce error</div>
+          </div>
+          <div class="hw-step">
+            <div class="hw-num">5</div>
+            <div class="hw-txt">Stops when it finds the best circle!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI LOG -->
+      <div class="psec">
+        <div class="psec-title">🖥️ AI Log</div>
+        <div class="log-scroll" id="logBox">
+          <div class="ll">Waiting for your drawing...</div>
+          <div class="ll">Draw a circle to start the AI!</div>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="psec">
+        <div class="btn-row">
+          <button class="btn btn-go" onclick="analyze()">🚀 Analyze!</button>
+          <button class="btn btn-clr" onclick="clearAll()">🗑️ Clear</button>
+        </div>
+      </div>
+
+    </div><!-- .right -->
+  </div><!-- .main -->
+
+</div><!-- .page -->
+
+<script src="script.js"></script>
+</body>
+</html>
